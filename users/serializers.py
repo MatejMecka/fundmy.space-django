@@ -5,7 +5,11 @@ from . import models
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.CustomUser
-        fields = ('email', 'username', )
+        fields = ('username', 'first_name', 'last_name' )
+        lookup_field = 'username'
+        extra_kwargs = {
+            'username': {'validators': []},
+        }
 
 class RegisterSerializer(RegisterSerializer):
     """
